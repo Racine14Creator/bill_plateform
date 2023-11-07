@@ -1,83 +1,49 @@
-// require("dotenv").config()
-const express = require('express'),
-jwt = require('jsonwebtoken'),
-bodyParser = require('body-parser'),
-cors = require('cors'),
-fs = require('fs')
-// const mongoose = require('mongoose');
+import express from "express"
+import mongoose from "mongoose"
+import bodyParser from "body-parser"
+import dotenv from "dotenv"
+import cors from "cors"
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
-const app = express();
-app.use(bodyParser.json());
-app.use(cors());
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-const secretKey = '1234';
+import path from 'path';
+dotenv.config({path: ".env"})
 
-// Connexion à MongoDB
-// mongoose.connect('mongodb://localhost/ma_base_de_donnees', { useNewUrlParser: true, useUnifiedTopology: true });
+const app = express(),
+  PORT = process.env.PORT || 3001,
+  DB = process.env.MONGO_URI
 
-// Modèle utilisateur MongoDB
-// const User = mongoose.model('User', {
-//   username: String,
-//   password: String
-// });
+// DB run
 
-function verifyToken(req, res, next) {
-  const token = req.headers.authorization;
+// Middlewares
 
-  if (!token) {
-    return res.status(403).send('Token manquant');
-  }
+app.use(cors())
 
-  jwt.verify(token, secretKey, (err, decoded) => {
-    if (err) {
-      return res.status(401).send('Token invalide');
-    }
-    req.user = decoded;
-    next();
-  });
-}
+app.use(express.json())
 
+app.use(express.urlencoded({extended: false}))
 
-app.get('/', (req, res)=>{
-  fs.readFile('index.html')
+app.use(bodyParser.json())
+
+app.use(bodyParser.urlencoded({extended: false}))
+
+app.set('view engine', 'ejs')
+
+app.set('views', path.join(__dirname, 'views'))
+
+app.use('/assets',express.static('public'))
+
+app.get("/", (req, res)=>{
+  res.render("Home")
 })
 
-app.post('/login', (req, res) => {
-  const { username, password } = req.body;
-  User.findOne({ username, password }, (err, user) => {
-    if (err || !user) {
-      return res.status(401).send('Identifiants incorrects');
-    }
-
-    const token = jwt.sign({ id: user._id, username: user.username }, secretKey, { expiresIn: '1h' });
-    res.send({ token });
-  });
-});
-
-const apiRouter = express.Router();
-apiRouter.use(verifyToken);
-
-apiRouter.get('/data', (req, res) => {
-  res.json({ message: 'Données lues avec succès' });
-});
-
-apiRouter.post('/data', (req, res) => {
-  res.json({ message: 'Données créées avec succès' });
-});
-
-apiRouter.put('/data/:id', (req, res) => {
-  const id = req.params.id;
-  res.json({ message: `Données mises à jour avec succès (ID : ${id})` });
-});
-
-apiRouter.delete('/data/:id', (req, res) => {
-  const id = req.params.id;
-  res.json({ message: `Données supprimées avec succès (ID : ${id})` });
-});
-
-app.use('/api', apiRouter);
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Serveur démarré sur le port ${PORT}`);
-});
+const Server = () => {
+  app.listen(PORT, (err) => {
+    if(err) throw err
+    console.log(`Server is running on Port: http://localhost:${PORT}`)
+  })
+}
+Server()
