@@ -1,8 +1,8 @@
 const exp = require("express"),
-route = exp.Router()
+    route = exp.Router()
 
-route.get("/", (req, res)=>{
-    res.json({message: "Hello"})
+route.get("/", (req, res) => {
+    res.json({ message: "Hello" })
 })
 
 module.export = route
