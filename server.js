@@ -12,6 +12,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 import path from 'path';
+
 dotenv.config({ path: ".env" })
 
 const app = express(),
