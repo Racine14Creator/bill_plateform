@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 :root{
-    --bg: rgb(46, 43, 43);
+    --bg: rgb(119, 119, 119);
     --bg-soft: rgb(28, 23, 23);
     --black: rgb(0, 0, 0);
     --white: #fff;
@@ -41,16 +41,32 @@ ul{
     color: var(--white);
 }
 
+.margin-top-20{
+    margin-top: 20px;
+}
+.title{
+    font-size: 30px;
+    font-weight: 600;
+}
+.img-wull{
+    width: 100%;
+}
+
 /* Navbar */
 
 .navbar{
+    z-index: 1000;
+    position: sticky;
+    top: 0;
     height: 70px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     padding: 5px 70px;
+    background-color: var(--bg);
 }
+
 .navbar ul{
     display: flex;
     flex-direction: row;
@@ -59,7 +75,112 @@ ul{
     padding: 10px 20px;
     border-radius: .4rem;
     transition: all ease .3s;
-    background-color: aquamarine;
+}
+.navbar ul li a:hover,
+.navbar ul li a:focus,
+.navbar ul li a.active{
+    background-color: var(--primary);
+    color: var(--white);
 }
 
 /* Navbar */
+
+/* Hero Section */
+
+.container{
+    max-width: 1240px;
+    margin: 10px auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.flex-1{flex: 1;}
+.flex-3{flex: 2;}
+
+/* Hero Section */
+
+/* Content */
+section{
+    position: relative;
+    width: 100%;
+    padding: 50px 0;
+    min-height: 100dvh;
+}
+.content{
+    max-width: 1240px;
+    margin: auto;
+}
+
+.flexContent{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 10px;
+}
+.footer{
+    display: flex;
+    justify-content: space-between;
+}
+footer{
+    padding: 100px 0;
+    color: var(--white);
+    background-color: #000 !important;
+}
+
+
+.grid-4{
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+.card{
+    border-radius: 10px;
+    padding: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: all ease 0.5s;
+    border: 1px solid #656565b2;
+}
+.bg{
+    background-color: var(--bg);
+}
+.card:hover{
+    border-radius: 20px;
+    box-shadow: 2px 5px 10px rgba(0,0,0,0.45);
+}
+/* Content */
+
+.grid-2{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.group{
+    margin: 10px auto;
+}
+
+.input{
+    width: 100%;
+    padding: 10px;
+    border: 2px solid var(--bg-soft);
+    border-radius: .4rem;
+    outline: none;
+    background-color: transparent;
+}
+
+/* Media */
+@media(max-width: 760px){
+    .menu{
+        display: none;
+    }
+    .container{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+        padding: 10px;
+    }
+}
+/* Media */
