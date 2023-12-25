@@ -12,7 +12,14 @@
     --width: 1240px;
     --font-family: Ubuntu, 'sans-serif';
 }
+.span{
+    border-radius: .4rem;
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 3px 8px;
+}
 body{
+    scroll-behavior: smooth;
     font-family: var(--font-family);
 }
 .container{
