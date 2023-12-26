@@ -48,6 +48,12 @@ ul{
     color: var(--white);
 }
 
+.bg-img{
+    background-image: url("/assets/img/wallet.png");
+    background-position: center;
+    background-size: cover;
+}
+
 .margin-top-20{
     margin-top: 20px;
 }
@@ -58,6 +64,14 @@ ul{
 }
 .img-wull{
     width: 100%;
+}
+
+.login{
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 350px;
+    margin: 10px auto;
 }
 
 /* Navbar */
