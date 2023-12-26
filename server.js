@@ -41,6 +41,7 @@ app.use('/assets', express.static('public'))
 app.get("/", (req, res) => {
   res.render("Home")
 })
+app.get("/login", (req, res)=>{res.render("Login")})
 
 app.use("/suscribe", suscribe)
 
