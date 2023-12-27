@@ -5,7 +5,6 @@ const suscribeSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-});
+}, {timestamps: true});
 
-const Suscribe = mongoose.model("Subscribe", suscribeSchema);
-export default Suscribe;
+export const Suscribe = mongoose.models.Suscribes || mongoose.model("Subscribe", suscribeSchema);

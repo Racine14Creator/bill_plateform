@@ -23,14 +23,10 @@ const app = express(),
 // Middlewares
 
 app.use(cors())
-
+app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
-
-app.use(express.urlencoded({ extended: false }))
-
-app.use(bodyParser.json())
-
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json({ limit: "30mb", extended: true }))
+app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }))
 
 app.set('view engine', 'ejs')
 
@@ -41,14 +37,17 @@ app.use('/assets', express.static('public'))
 app.get("/", (req, res) => {
   res.render("Home")
 })
-app.get("/login", (req, res)=>{res.render("Login")})
-app.get("/registration", (req, res)=>{res.render("Registration")})
+app.get("/login", (req, res) => { res.render("Login") })
+app.get("/registration", (req, res) => { res.render("Registration") })
 
-app.use("/suscribe", suscribe)
+app.use("/subscriber", suscribe)
 
-mongoose
-  .connect(process.env.DB,).then(_ => {
-    app.listen(PORT, () => console.log(`Server Port: localhost:${PORT}`));
-    // To run it once
-    console.log("MongoDB connected")
-  }).catch((err) => console.log(`${err} did not connect`));
+const Server = function () {
+  mongoose
+    .connect(process.env.DB,).then(_ => {
+      app.listen(PORT, () => console.log(`Server Port: localhost:${PORT}`));
+      // To run it once
+      console.log("MongoDB connected")
+    }).catch((err) => console.log(`${err} did not connect`));
+}
+Server()

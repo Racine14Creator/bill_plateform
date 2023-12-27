@@ -1,9 +1,10 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-:root{
+
+:root {
     --bg: rgb(119, 119, 119);
     --bg-soft: rgb(28, 23, 23);
     --black: rgb(0, 0, 0);
@@ -12,64 +13,73 @@
     --width: 1240px;
     --font-family: Ubuntu, 'sans-serif';
 }
-.link{
+
+.link {
     color: rgb(0, 116, 179);
 }
-.span{
+
+.span {
     border-radius: .4rem;
     background-color: var(--primary);
     color: var(--white);
     padding: 3px 8px;
 }
-body{
+
+body {
     scroll-behavior: smooth;
     font-family: var(--font-family);
 }
-.container{
+
+.container {
     max-width: 1240px;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
-button{
+button {
     padding: 10px 20px;
     border: none;
     background-color: none;
     outline: none;
 }
-ul{
+
+ul {
     list-style: none;
 }
-.btn{
+
+.btn {
     padding: 10px 20px;
     border-radius: .4rem;
 }
-.primary-btn{
+
+.primary-btn {
     background-color: var(--primary);
     color: var(--white);
 }
 
-.bg-img{
+.bg-img {
     background-image: url("/assets/img/wallet.png");
     background-position: center;
     background-size: cover;
 }
 
-.margin-top-20{
+.margin-top-20 {
     margin-top: 20px;
 }
-.title{
+
+.title {
     margin: 20px 0;
     font-size: 30px;
     font-weight: 600;
 }
-.img-wull{
+
+.img-wull {
     width: 100%;
 }
 
-.login{
+.login {
     background-color: var(--white);
     padding: 20px;
     border-radius: 10px;
@@ -79,7 +89,7 @@ ul{
 
 /* Navbar */
 
-.navbar{
+.navbar {
     z-index: 1000;
     position: sticky;
     top: 0;
@@ -89,21 +99,23 @@ ul{
     align-items: center;
     width: 100%;
     padding: 5px 70px;
-    background-color: var(--bg);
+    background-color: rgba(43, 35, 35, 0.737);
 }
 
-.navbar ul{
+.navbar ul {
     display: flex;
     flex-direction: row;
 }
-.navbar ul li a{
+
+.navbar ul li a {
     padding: 10px 20px;
     border-radius: .4rem;
     transition: all ease .3s;
 }
+
 .navbar ul li a:hover,
 .navbar ul li a:focus,
-.navbar ul li a.active{
+.navbar ul li a.active {
     background-color: var(--primary);
     color: var(--white);
 }
@@ -112,54 +124,64 @@ ul{
 
 /* Hero Section */
 
-.container{
+.container {
     max-width: 1240px;
     margin: 10px auto;
     display: flex;
     align-items: center;
     gap: 10px;
 }
-.flex-1{flex: 1;}
-.flex-3{flex: 2;}
+
+.flex-1 {
+    flex: 1;
+}
+
+.flex-3 {
+    flex: 2;
+}
 
 /* Hero Section */
 
 /* Content */
-section{
+section {
     position: relative;
     width: 100%;
     padding: 50px 0;
     min-height: 100dvh;
 }
-.content{
+
+.content {
     max-width: 1240px;
     margin: auto;
 }
 
-.flexContent{
+.flexContent {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     gap: 10px;
 }
-.footer{
+
+.footer {
     display: flex;
     justify-content: space-between;
 }
-footer{
+
+footer {
     padding: 100px 0;
     color: var(--white);
     background-color: #000 !important;
 }
 
 
-.grid-4{
+.grid-4 {
     margin: 20px auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
 }
-.card{
+
+.card {
     border-radius: 10px;
     padding: 10px 0;
     display: flex;
@@ -169,29 +191,50 @@ footer{
     transition: all ease 0.5s;
     border: 1px solid #656565b2;
 }
-.bg{
+
+.bg {
     background-color: var(--bg);
-    filter: blur(40px);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
-.card:hover{
+
+.card:hover {
     border-radius: 20px;
-    box-shadow: 2px 5px 10px rgba(0,0,0,0.45);
+    box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.45);
 }
 
 /* Content */
 
-.grid-2{
+.grid-2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
-.group{
+
+.group {
     margin: 10px auto;
 }
 
-.input{
+.alert-success,
+.alert-error {
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.alert-error {
+    background-color: rgba(255, 0, 0, 0.275);
+    border: 2px solid red;
+    color: red;
+
+}
+
+.alert-success {
+    background-color: rgba(0, 128, 0, 0.311);
+    border: 2px solid green;
+    color: green;
+}
+
+.input {
     width: 100%;
     padding: 10px;
     border: 2px solid var(--bg-soft);
@@ -201,11 +244,12 @@ footer{
 }
 
 /* Media */
-@media(max-width: 760px){
-    .menu{
+@media(max-width: 760px) {
+    .menu {
         display: none;
     }
-    .container{
+
+    .container {
         display: flex;
         flex-direction: column;
         gap: 20px;
@@ -213,4 +257,5 @@ footer{
         padding: 10px;
     }
 }
+
 /* Media */

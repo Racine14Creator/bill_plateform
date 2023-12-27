@@ -1,4 +1,60 @@
-    
-    
-</body>
-</html>
+<footer class="bg">
+    <div class="content">
+        <div class="footer">
+            <div class="form">
+                <h2 class="title">Subscribe to our newsletters</h2>
+                <span id="error"></span>
+                <form action="#" method="post" id="myForm">
+                    <div class="group">
+                        <label for="email">Email Address</label>
+                        <input type="email" name="email" id="emailData" placeholder="e.g: example@example.cd"
+                            class="input" />
+                    </div>
+                    <div class="group">
+                        <button type="submit" class="btn primary-btn">Subscribe</button>
+                    </div>
+                </form>
+            </div>
+            <div>
+
+                <p style="text-align: center;">
+                    copyright &copy; 2024
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const myForm = document.getElementById("myForm"),
+        error = document.getElementById('error')
+
+    myForm.onsubmit = (event) => {
+        event.preventDefault()
+        const em = document.getElementById('emailData').value,
+            email = em.trim()
+
+        console.log(email)
+        fetch('http://localhost:7000/subscriber',
+            {
+                method: "POST", body: JSON.stringify({ email: email }),
+                headers: { "Content-Type": "application/json; charset=UTF-8" }
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data = 'success') {
+                    error.innerHTML = `<p class="alert-success">Registration success<p>`
+                } else {
+                    error.innerHTML = `<p class="alert-error">${data.data} error<p>`
+                    console.log(data)
+                }
+            })
+            .catch(err => console.error(err))
+        // if (email === '') {
+        //     error.innerHTML = '<p class="alert-error">Email is empty or invalid</p>';
+        // } else {
+        //     error = ""
+
+        // }
+    }
+</script>
