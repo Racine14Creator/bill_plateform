@@ -42,6 +42,7 @@ app.get("/", (req, res) => {
   res.render("Home")
 })
 app.get("/login", (req, res)=>{res.render("Login")})
+app.get("/registration", (req, res)=>{res.render("Registration")})
 
 app.use("/suscribe", suscribe)
 

@@ -12,6 +12,9 @@
     --width: 1240px;
     --font-family: Ubuntu, 'sans-serif';
 }
+.link{
+    color: rgb(0, 116, 179);
+}
 .span{
     border-radius: .4rem;
     background-color: var(--primary);
@@ -168,11 +171,16 @@ footer{
 }
 .bg{
     background-color: var(--bg);
+    filter: blur(40px);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .card:hover{
     border-radius: 20px;
     box-shadow: 2px 5px 10px rgba(0,0,0,0.45);
 }
+
 /* Content */
 
 .grid-2{
